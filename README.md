@@ -1,1 +1,1 @@
-Java Progress Tracker
+Java Progress Tracker with using Git (Hopefully)
