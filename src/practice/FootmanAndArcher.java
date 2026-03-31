@@ -71,16 +71,31 @@ class GeneralRanger extends Hero {
     }
 }
 
-
 class FootmanAndArcherTest {
     public static void main(String[] args) {
-        DeathKnight ftmn = new DeathKnight("Arthas", 150, 10);
-        GeneralRanger arch = new GeneralRanger("Sylvanas", 125, 15);
+        DeathKnight dk = new DeathKnight("Arthas", 150, 10);
+        GeneralRanger gr = new GeneralRanger("Sylvanas", 125, 15);
 
-        ftmn.printHeroInfo();
-        arch.printHeroInfo();
+        System.out.print("\n---Battle Simulation---\n");
+        dk.printHeroInfo();
+        gr.printHeroInfo();
 
-        ftmn.attackHero(arch);
-        arch.attackHero(ftmn);
+        System.out.print("\n---Battle Started!---\n");
+        int numRounds = 1;
+        while(dk.getHealth() > 0 && gr.getHealth() > 0) {
+            System.out.println("\n--------------------");
+            System.out.printf("Round: %d!\n", numRounds);
+
+            dk.attackHero(gr);
+            if(gr.getHealth() <= 0) {
+                break;
+            }
+            else {
+                System.out.println();
+                gr.attackHero(dk);
+            }
+            numRounds++;
+        }
+        System.out.println("--------------------");
     }
 }
