@@ -29,7 +29,7 @@ class Footman extends Unit {
     }
 }
 
-class Main {
+class UnitTest {
     public static void main(String[] args) {
         Footman ftmn = new Footman("Footman", 150, 10, 5);
         ftmn.printUnitInfo();
