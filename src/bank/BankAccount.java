@@ -1,4 +1,4 @@
-package Bank;
+package bank;
 
 class BankAccount {
     private final String ownerName;
