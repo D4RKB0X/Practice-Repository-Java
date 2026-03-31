@@ -1,6 +1,6 @@
 package practice;
 
-class Hero {
+abstract class Hero {
     private final String name;
     private int health;
     private final int damage;
@@ -15,15 +15,10 @@ class Hero {
     public int getHealth() { return health; }
     public int getDamage() { return damage; }
 
-    public void attackAnimation() {}
+    public abstract void attackAnimation();
     public void attackHero(Hero target) {
-        if(getHealth() <= 0) {
+        if(getHealth() <= 0 || target.getHealth() <= 0) {
             System.out.printf("%s is dead!\n", getName());
-            return;
-        }
-        else if(target.getHealth() <= 0) {
-            System.out.printf("%s is dead!\n", target.getName());
-            return;
         }
         else {
             attackAnimation();
@@ -82,6 +77,7 @@ class FootmanAndArcherTest {
 
         System.out.print("\n---Battle Started!---\n");
         int numRounds = 1;
+
         while(dk.getHealth() > 0 && gr.getHealth() > 0) {
             System.out.println("\n--------------------");
             System.out.printf("Round: %d!\n", numRounds);
@@ -96,6 +92,12 @@ class FootmanAndArcherTest {
             }
             numRounds++;
         }
-        System.out.println("--------------------");
+
+        System.out.println("--------------------\n");
+        if (dk.getHealth() <= 0) {
+            System.out.printf("%s wins!\n", gr.getName());
+        } else {
+            System.out.printf("%s wins!\n", dk.getName());
+        }
     }
 }
