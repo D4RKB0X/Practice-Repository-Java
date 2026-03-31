@@ -1,6 +1,6 @@
 import bank.Menu;
 
-public class Main {
+class Main {
     static void main(String[] args) {
 //      Menu userMenu = new Menu(null);
 //      userMenu.startMenu();
