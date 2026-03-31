@@ -67,7 +67,7 @@ class GeneralRanger extends Hero {
 }
 
 class FootmanAndArcherTest {
-    public static void main(String[] args) {
+    static void main(String[] args) {
         DeathKnight dk = new DeathKnight("Arthas", 150, 10);
         GeneralRanger gr = new GeneralRanger("Sylvanas", 125, 15);
 
