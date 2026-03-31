@@ -1,7 +1,9 @@
+package Bank;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Menu {
+public class Menu {
     Scanner input = new Scanner(System.in);
     private final ArrayList<BankAccount> userAccounts;
 
@@ -112,11 +114,11 @@ class Menu {
         if(selected != null) {
             int menuAction;
             do {
-                System.out.println("\n--- Account Menu ---\n");
+                System.out.println("\n--- Account Bank Menu ---\n");
                 System.out.println("1. Deposit\n");
                 System.out.println("2. Withdraw\n");
                 System.out.println("3. Display Info\n");
-                System.out.println("4. Back to Main Menu\n");
+                System.out.println("4. Back to Main Bank.Menu\n");
 
                 System.out.println("Enter your Choice: ");
                 menuAction = input.nextInt();
@@ -144,7 +146,7 @@ class Menu {
                         break;
                     }
                     case 4: {
-                        System.out.println("Returning to Main Menu...\n");
+                        System.out.println("Returning to Main Bank.Menu...\n");
                         break;
                     }
                     default: {

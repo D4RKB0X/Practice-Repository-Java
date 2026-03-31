@@ -1,3 +1,5 @@
+package Bank;
+
 class BankAccount {
     private final String ownerName;
     private final int accountNumber;
