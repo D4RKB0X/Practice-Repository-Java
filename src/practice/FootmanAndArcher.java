@@ -1,0 +1,86 @@
+package practice;
+
+class Hero {
+    private final String name;
+    private int health;
+    private final int damage;
+
+    public Hero(String n, int h, int d) {
+        this.name = n;
+        this.health = h;
+        this.damage = d;
+    }
+
+    public String getName() { return name; }
+    public int getHealth() { return health; }
+    public int getDamage() { return damage; }
+
+    public void attackAnimation() {}
+    public void attackHero(Hero target) {
+        if(getHealth() <= 0) {
+            System.out.printf("%s is dead!\n", getName());
+            return;
+        }
+        else if(target.getHealth() <= 0) {
+            System.out.printf("%s is dead!\n", target.getName());
+            return;
+        }
+        else {
+            attackAnimation();
+            System.out.printf("%s attacks %s!\n", getName(), target.getName());
+            target.takeDamage(getDamage());
+        }
+    }
+
+    public void takeDamage(int dmg) {
+        health -= dmg;
+
+        if(health < 0) {
+            health = 0;
+            System.out.printf("%s is dead!\n", name);
+        }
+        else {
+            System.out.printf("%s now has %d HP!\n", name, health);
+        }
+    }
+
+    public void printHeroInfo() {
+        System.out.printf("Name: %s | Health: %d | Damage: %d\n", name, health, damage);
+    }
+}
+
+class DeathKnight extends Hero {
+    public DeathKnight(String n, int h, int d) {
+        super(n, h, d);
+    }
+
+    @Override
+    public void attackAnimation() {
+        System.out.printf("%s swings their sword!\n", getName());
+    }
+}
+
+class GeneralRanger extends Hero {
+    public GeneralRanger(String n, int h, int d) {
+        super(n, h, d);
+    }
+
+    @Override
+    public void attackAnimation() {
+        System.out.printf("%s shoots an arrow!\n", getName());
+    }
+}
+
+
+class FootmanAndArcherTest {
+    public static void main(String[] args) {
+        DeathKnight ftmn = new DeathKnight("Arthas", 150, 10);
+        GeneralRanger arch = new GeneralRanger("Sylvanas", 125, 15);
+
+        ftmn.printHeroInfo();
+        arch.printHeroInfo();
+
+        ftmn.attackHero(arch);
+        arch.attackHero(ftmn);
+    }
+}

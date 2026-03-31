@@ -19,7 +19,7 @@ public class Unit {
     public int getArmor() { return armor; }
 
     public void printUnitInfo() {
-        System.out.printf("Name: %s | Health: %d | Damage: %d | Armor: %d", name, health, damage, armor);
+        System.out.printf("Name: %s | Health: %d | Damage: %d | Armor: %d\n", name, health, damage, armor);
     }
 }
 
@@ -29,9 +29,18 @@ class Footman extends Unit {
     }
 }
 
+class Archer extends Unit {
+    public Archer(String n, int h, int d, int a) {
+        super(n, h, d, a);
+    }
+}
+
 class UnitTest {
     public static void main(String[] args) {
         Footman ftmn = new Footman("Footman", 150, 10, 5);
         ftmn.printUnitInfo();
+
+        Archer arch = new Archer("Archer", 100, 15, 1);
+        arch.printUnitInfo();
     }
 }
