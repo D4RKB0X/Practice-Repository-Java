@@ -1,4 +1,4 @@
-import bank.Menu;
+package bank;
 
 class Main {
     static void main(String[] args) {
