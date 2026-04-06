@@ -1,4 +1,4 @@
-package practice;
+package practice.classes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +46,7 @@ class Hero implements InventoryHolder {
 
 class Inventory {
     public static void main(String[] args) {
-        Hero arth = new Hero("Arthas");
+        practice.experiments.Hero arth = new practice.experiments.Hero("Arthas");
 
         String[] items = {
                 "Crown of Kings",

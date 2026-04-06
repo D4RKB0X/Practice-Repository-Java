@@ -1,4 +1,4 @@
-package bank;
+package miniprojects.bank;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -114,11 +114,11 @@ public class Menu {
         if(selected != null) {
             int menuAction;
             do {
-                System.out.println("\n--- Account bank Menu ---\n");
+                System.out.println("\n--- Account miniprojects.bank Menu ---\n");
                 System.out.println("1. Deposit\n");
                 System.out.println("2. Withdraw\n");
                 System.out.println("3. Display Info\n");
-                System.out.println("4. Back to Main bank.Menu\n");
+                System.out.println("4. Back to Main miniprojects.bank.Menu\n");
 
                 System.out.println("Enter your Choice: ");
                 menuAction = input.nextInt();
@@ -146,7 +146,7 @@ public class Menu {
                         break;
                     }
                     case 4: {
-                        System.out.println("Returning to Main bank.Menu...\n");
+                        System.out.println("Returning to Main miniprojects.bank.Menu...\n");
                         break;
                     }
                     default: {

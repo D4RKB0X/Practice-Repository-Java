@@ -1,4 +1,4 @@
-package practice;
+package practice.classes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +85,7 @@ class Unit {
 
 class MainSpell {
     public static void main(String[] args) {
-        Unit priest = new Unit("Priest", 100);
+        practice.interfaces.Unit priest = new practice.interfaces.Unit("Priest", 100);
 
         Spell healChain = new Spell("Heal Chain", 30);
         Spell holyLight = new Spell("Holy Light", 50);

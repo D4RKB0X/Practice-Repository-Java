@@ -1,4 +1,4 @@
-package practice;
+package practice.experiments;
 
 abstract class Hero {
     private final String name;

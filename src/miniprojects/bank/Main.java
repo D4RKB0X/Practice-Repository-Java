@@ -1,4 +1,4 @@
-package bank;
+package miniprojects.bank;
 
 class Main {
     static void main(String[] args) {

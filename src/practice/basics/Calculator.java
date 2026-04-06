@@ -1,4 +1,4 @@
-package practice;
+package practice.basics;
 import java.util.Scanner;
 
 class CalculatorMenu {

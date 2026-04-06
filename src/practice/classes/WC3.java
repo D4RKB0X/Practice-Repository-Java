@@ -1,4 +1,4 @@
-package practice;
+package practice.classes;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +11,7 @@ abstract class Buildings {
     public abstract void printInfo();
 }
 
-class AltarOfHeroes extends Buildings {
+class AltarOfHeroes extends practice.experiments.Buildings {
     private final HashMap<String, Heroes> availableHeroes = new HashMap<>();
     public AltarOfHeroes(String name) { super(name); }
 

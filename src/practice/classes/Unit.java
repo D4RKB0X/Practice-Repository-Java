@@ -1,4 +1,4 @@
-package practice;
+package practice.classes;
 
 public class Unit {
     private final String name;
@@ -23,13 +23,13 @@ public class Unit {
     }
 }
 
-class Footman extends Unit {
+class Footman extends practice.interfaces.Unit {
     public Footman(String n, int h, int d, int a) {
         super(n, h, d, a);
     }
 }
 
-class Archer extends Unit {
+class Archer extends practice.interfaces.Unit {
     public Archer(String n, int h, int d, int a) {
         super(n, h, d, a);
     }

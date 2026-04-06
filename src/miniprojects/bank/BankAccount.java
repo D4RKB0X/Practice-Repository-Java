@@ -1,4 +1,4 @@
-package bank;
+package miniprojects.bank;
 
 class BankAccount {
     private final String ownerName;
