@@ -45,15 +45,9 @@ class CalculatorMenu {
 
 class CalculatorFunctions {
     public static int additionFunction(int fn, int sn) { return fn + sn; }
-    public static int subtractionFunction(int fn, int sn) {
-        return fn - sn;
-    }
-    public static int multiplicationFunction(int fn, int sn) {
-        return fn * sn;
-    }
-    public static double divisionFunction(double fn, double sn) {
-        return fn / sn;
-    }
+    public static int subtractionFunction(int fn, int sn) { return fn - sn; }
+    public static int multiplicationFunction(int fn, int sn) { return fn * sn; }
+    public static double divisionFunction(double fn, double sn) { return fn / sn; }
 }
 
 class CalcTest {
