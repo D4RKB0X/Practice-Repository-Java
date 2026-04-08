@@ -2,7 +2,6 @@ package practice.classes;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.Math;
 
 enum AttackType { Melee, Ranged, None }
 enum MoveType { Foot, Fly, Hover, Horse, Amphibious, None }
