@@ -1,5 +1,3 @@
-package practice.classes;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math;
@@ -22,12 +20,7 @@ class Unit implements AttackBehavior, MovementBehavior {
     private final MoveType initMoveType;
 
     private final List<Spell> unitSpell;
-
     private static final int MAX_SPELL_CAPACITY = 4;
-    private static final int MAX_RANGE_FOR_MELEE = 200;
-    private static final int MAX_RANGE_FOR_RANGE = 1000;
-    private static final int FAST_SPEED = 300;
-    private static final int SLOW_SPEED = 200;
 
     public Unit(String name, int health, int mana, int attackRange, int moveSpeed, AttackType initAttackType, MoveType initMoveType) {
         if (name == null || name.isBlank()) {
@@ -156,6 +149,17 @@ class Unit implements AttackBehavior, MovementBehavior {
         }
     }
 
+    public void unitRemoveSpell(Spell inputSpell) {
+        if(!unitSpell.contains(inputSpell)) {
+            System.err.printf("%s doesn't have %s!\n", name, inputSpell.getSpellName());
+            return;
+        }
+        else {
+            unitSpell.remove(inputSpell);
+            System.out.printf("%s has been removed from %s!\n", inputSpell.getSpellName(), name);
+        }
+    }
+
     public void unitUseSpell(Spell inputSpell, Unit uTarget) {
         if(!unitSpell.contains(inputSpell)) {
             System.err.printf("%s doesn't have %s ability on them!\n", getUnitName(), inputSpell.getSpellName());
@@ -175,7 +179,6 @@ class Unit implements AttackBehavior, MovementBehavior {
     public void printUnitInfo() {
         System.out.printf("Unitname: %s | Health: %d | Mana: %d | Attack Range: %d | Movement Speed: %d\n", name, health, mana, attackRange, moveSpeed);
     }
-
 }
 
 class Spell {
@@ -203,51 +206,113 @@ class Spell {
 }
 
 class Hero extends Unit {
-    private int strength;
-    private int agility;
-    private int intelligence;
+    private int heroLevel = 1;
+    private static final int MAX_HERO_LEVEL = 10;
 
-    public Hero(String name, int health, int mana, int attackRange, int moveSpeed, AttackType initAttackType, MoveType initMoveType, int strength, int agility, int intelligence) {
+    private double strength;
+    private double agility;
+    private double intelligence;
+
+    private static final double ADD_STRENGTH = 2.0;
+    private static final double ADD_AGILITY = 1.0;
+    private static final double ADD_INTELLIGENCE = 1.5;
+
+    public Hero(String name, int health, int mana, int attackRange, int moveSpeed, AttackType initAttackType, MoveType initMoveType, double strength, double agility, double intelligence) {
         super(name, health, mana, attackRange, moveSpeed, initAttackType, initMoveType);
         this.strength = strength;
         this.agility = agility;
         this.intelligence = intelligence;
     }
 
-    public int getHeroStrength() { return strength; }
-    public int getHeroAgility() { return agility; }
-    public int getHeroIntelligence() { return intelligence; }
+    public double getHeroStrength() { return strength; }
+    public double getHeroAgility() { return agility; }
+    public double getHeroIntelligence() { return intelligence; }
+
+    public void heroLevelUp(int level) {
+        if(level <= 0) {
+            System.err.print("Invalid Level Input!\n");
+            return;
+        }
+
+        int levelGained = Math.min(level, MAX_HERO_LEVEL - heroLevel);
+        if(levelGained == 0) {
+            System.err.printf("%s is already at max level!\n", getUnitName());
+            return;
+        }
+        else {
+            strength += ADD_STRENGTH * levelGained;
+            agility += ADD_AGILITY * levelGained;
+            intelligence += ADD_INTELLIGENCE * levelGained;
+            System.out.printf("%s leveled up!\nNew Attributes:\n- Strength: %.1f\n- Agility: %.1f\n- Intelligence: %.1f\n", getUnitName(), strength, agility, intelligence);
+        }
+    }
 
     @Override
     public void printUnitInfo() {
-        System.out.printf("Heroname: %s | Health: %d | Mana: %d | Attack Range: %d | Movement Speed: %d\nAttributes:\n- Strength: %d\n- Agility: %d\n- Intelligence: %d\n", getUnitName(), getUnitHealth(), getUnitMana(), getUnitRange(), getUnitSpeed(), strength, agility, intelligence);
+        System.out.printf("Heroname: %s | Level: %d | Health: %d | Mana: %d | Attack Range: %d | Movement Speed: %d\nAttributes:\n- Strength: %.1f\n- Agility: %.1f\n- Intelligence: %.1f\n", getUnitName(), heroLevel, getUnitHealth(), getUnitMana(), getUnitRange(), getUnitSpeed(), strength, agility, intelligence);
     }
 }
 
-class OOP {
+class Main {
     public static void main(String[] args) {
         System.out.println("--- Starting WC3 Sandbox ---");
 
-        Hero dreadlord = new Hero("Mal'Ganis", 1200, 400, 150, 290, AttackType.Melee, MoveType.Foot, 22, 15, 18 );
-
+        Hero dreadlord = new Hero("Mal'Ganis", 1200, 400, 150, 290, AttackType.Melee, MoveType.Foot, 22, 15, 18);
         Unit footman = new Unit("Footman", 420, 0, 100, 270, AttackType.Melee, MoveType.Foot);
+        Unit peasant = new Unit("Peasant", 250, 0, 10, 220, AttackType.None, MoveType.Foot);
 
-        Spell deathCoil = new Spell("Death Coil", 100, 200);
+        Spell deathCoil    = new Spell("Death Coil", 100, 200);
+        Spell carrionSwarm = new Spell("Carrion Swarm", 125, 300);
+        Spell sleep        = new Spell("Sleep", 150, 0);
+        Spell inferno      = new Spell("Inferno", 175, 100);
+        Spell dummy        = new Spell("Dummy Spell", 50, 10);
 
-        System.out.println("\n---Action: Unit Info---");
+        System.out.println("\n--- Unit Info ---");
         dreadlord.printUnitInfo();
+        footman.printUnitInfo();
+        peasant.printUnitInfo();
 
-        System.out.println("\n---Action: Testing Animations---");
+        System.out.println("\n--- Animations ---");
         dreadlord.attackAnimation();
         dreadlord.movementAnimation();
+        peasant.attackAnimation();
 
-        System.out.println("\n---Action: Learning & Casting---");
+        System.out.println("\n--- Level Up ---");
+        dreadlord.heroLevelUp(1);
+
+        System.out.println("\n--- Adding Spells ---");
         dreadlord.unitAddSpell(deathCoil);
+        dreadlord.unitAddSpell(carrionSwarm);
+        dreadlord.unitAddSpell(sleep);
+        dreadlord.unitAddSpell(inferno);
+        dreadlord.unitAddSpell(dummy);
+
+        System.out.println("\n--- Spell Info ---");
+        deathCoil.printSpellInfo();
+        carrionSwarm.printSpellInfo();
+
+        System.out.println("\n--- Casting Spells ---");
         dreadlord.unitUseSpell(deathCoil, footman);
+        dreadlord.unitUseSpell(carrionSwarm, footman);
+        dreadlord.unitUseSpell(sleep, peasant);
 
-        System.out.println("\n---Action: Final Status---");
+        System.out.println("\n--- Cast Unowned Spell ---");
+        footman.unitUseSpell(deathCoil, peasant);
+
+        System.out.println("\n--- Not Enough Mana ---");
+        dreadlord.unitUseSpell(inferno, peasant);
+
+        System.out.println("\n--- Remove Spell ---");
+        dreadlord.unitRemoveSpell(sleep);
+        dreadlord.unitRemoveSpell(dummy);
+
+        System.out.println("\n--- Final Status ---");
+        dreadlord.printUnitInfo();
         footman.printUnitInfo();
+        peasant.printUnitInfo();
+        System.out.printf("Footman alive: %b\n", footman.isAlive());
+        System.out.printf("Peasant alive: %b\n", peasant.isAlive());
 
-        System.out.println("\n--- Sandbox Simulation Complete. ---");
+        System.out.println("\n--- Sandbox Complete ---");
     }
 }
