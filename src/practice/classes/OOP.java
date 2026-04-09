@@ -67,7 +67,7 @@ class Unit implements AttackBehavior, MovementBehavior {
                 break;
             }
             default: {
-                System.err.printf("Error!\n");
+                System.err.print("Error!\n");
                 break;
             }
         }
