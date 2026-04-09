@@ -2,6 +2,7 @@ package practice.classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.Math;
 
 enum AttackType { Melee, Ranged, None }
 enum MoveType { Foot, Fly, Hover, Horse, Amphibious, None }
@@ -174,6 +175,7 @@ class Unit implements AttackBehavior, MovementBehavior {
     public void printUnitInfo() {
         System.out.printf("Unitname: %s | Health: %d | Mana: %d | Attack Range: %d | Movement Speed: %d\n", name, health, mana, attackRange, moveSpeed);
     }
+
 }
 
 class Spell {
@@ -227,7 +229,9 @@ class OOP {
         System.out.println("--- Starting WC3 Sandbox ---");
 
         Hero dreadlord = new Hero("Mal'Ganis", 1200, 400, 150, 290, AttackType.Melee, MoveType.Foot, 22, 15, 18 );
+
         Unit footman = new Unit("Footman", 420, 0, 100, 270, AttackType.Melee, MoveType.Foot);
+
         Spell deathCoil = new Spell("Death Coil", 100, 200);
 
         System.out.println("\n---Action: Unit Info---");
