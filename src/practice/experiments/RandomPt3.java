@@ -104,7 +104,7 @@ class Spell {
     }
 }
 
-class Main {
+class RandomPt3 {
     public static void main(String[] args) {
         Unit arthas = new Unit("Arthas", 200);
         Spell frostbolt = new Spell("Frostbolt", 50, 3);
