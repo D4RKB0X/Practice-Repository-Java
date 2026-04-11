@@ -118,7 +118,7 @@ class RandomPt3 {
         frostbolt.tryCast(arthas);
         frostbolt.tryCast(arthas);
 
-        System.out.println("\n-- Tick x3 --");
+        System.out.println("\n-- Tick 3 Seconds --");
         for (int i = 0; i < 3; i++) frostbolt.tick();
 
         System.out.println("\n-- Round 2 --");
