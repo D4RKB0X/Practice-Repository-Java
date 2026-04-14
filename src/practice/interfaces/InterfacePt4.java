@@ -153,9 +153,9 @@ class Main {
         priest.printInfo();
         
         System.out.println("\n=== Combat ===");
-        footman.dealDamage(priest);
-        footman.dealDamage(priest);
-        footman.dealDamage(priest);
+        priest.dealDamage(footman);
+        priest.dealDamage(footman);
+        priest.dealDamage(footman);
         
         System.out.println("\n=== Healing ===");
         priest.healTarget(footman, 25);
